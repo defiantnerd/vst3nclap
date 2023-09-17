@@ -130,7 +130,10 @@ int main(int argc, char** argv)
   
   // sort it
   std::cout << "sorting" << std::endl << std::flush;
+  auto t1 = clock();
   sortqueue(largequeue, partitions, indexes);
+  auto t2 = clock();
+  std::cout << "this took " << (((t2-t1)*1000000) / CLOCKS_PER_SEC) << "ns" << std::endl;
   std::cout << "checking stability" << std::endl;
   
   if ( checkqueue(largequeue, indexes) )
